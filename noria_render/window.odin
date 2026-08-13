@@ -40,8 +40,33 @@ new_window :: proc(width: int, height: int, title: string) -> Window {
 	delete(title_cstring)
 
 	
+
+	
+
+	
 	return Window {
 		window_handle = window_handle
 	}
+}
+
+window_select :: proc(win: ^Window) {
+	glfw.MakeContextCurrent(win.window_handle)
+}
+
+window_was_closed :: proc(win: ^Window) -> bool {
+	return bool(glfw.WindowShouldClose(win.window_handle))
+}
+
+window_update :: proc(win: ^Window) {
+	
+	glfw.PollEvents()
+
+	
+}
+
+window_render :: proc(win: ^Window) {
+	
+	glfw.SwapBuffers(win.window_handle)
+	
 }
 

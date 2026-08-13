@@ -32,6 +32,19 @@ main :: proc() {
 
 	defer render.deinit_window_system()
 
-	
+	window := render.new_window(800, 600, "Hello")
 
+	render.window_select(&window)
+
+	// Main Game Loop
+	for { 
+		render.window_update(&window)
+
+		render.window_render(&window)
+		
+		if render.window_was_closed(&window) {
+			break
+		}
+	}
+	
 }
